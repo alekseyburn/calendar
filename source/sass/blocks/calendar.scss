@@ -1,0 +1,8 @@
+.calendar {
+  padding: $margin;
+  background-color: $gray;
+}
+
+.calendar__list {
+  @include reset-list;
+}

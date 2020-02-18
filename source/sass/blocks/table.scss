@@ -1,0 +1,39 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: $gray;
+  text-align: center;
+}
+
+.table__month {
+  height: 36px;
+  background-color: $green;
+  color: $white;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.table__daynames {
+  height: 36px;
+}
+
+.table__dayname {
+  width: 14%;
+
+  vertical-align: middle;
+}
+
+.table__day {
+  height: 36px;
+  padding: 0;
+
+  &:nth-last-child(-n+2) {
+    font-weight: 700;
+  }
+  & a {
+    display: block;
+    height: 100%;
+    color: $black;
+  }
+}
