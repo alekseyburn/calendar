@@ -6,3 +6,7 @@
 .calendar__list {
   @include reset-list;
 }
+
+.calendar__item {
+  margin-bottom: $margin;
+}

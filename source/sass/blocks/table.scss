@@ -31,9 +31,14 @@
   &:nth-last-child(-n+2) {
     font-weight: 700;
   }
+
   & a {
     display: block;
     height: 100%;
     color: $black;
+  }
+
+  &--active {
+    background-color: $white;
   }
 }
