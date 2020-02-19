@@ -1,17 +1,21 @@
 .table {
   width: 100%;
+
   border-collapse: collapse;
   border-spacing: 0;
-  background-color: $gray;
   text-align: center;
+
+  background-color: $gray;
 }
 
 .table__month {
   height: 36px;
-  background-color: $green;
-  color: $white;
+
   font-weight: 700;
   line-height: 36px;
+  color: $white;
+
+  background-color: $green;
 }
 
 .table__daynames {
@@ -35,6 +39,7 @@
   & a {
     display: block;
     height: 100%;
+
     color: $black;
   }
 

@@ -1,5 +1,6 @@
 .calendar {
   padding: $margin;
+
   background-color: $gray;
 }
 
@@ -9,4 +10,21 @@
 
 .calendar__item {
   margin-bottom: $margin;
+}
+
+@media (min-width: $tablet-width) {
+  .calendar {
+    width: $tablet-width;
+    margin: 0 auto;
+  }
+
+  .calendar__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .calendar__item {
+    width: 30%;
+  }
 }
