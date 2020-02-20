@@ -1,0 +1,24 @@
+.date-info {
+  border-top: 1px solid $black;
+  padding: 5px;
+}
+
+.date-info__title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.date-info__text {
+  margin: 0;
+  line-height: 24px;
+}
+
+.date-info__link {
+  color: white;
+  font-weight: 700;
+  background-color: $green;
+  padding: 5px 10px;
+  line-height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}

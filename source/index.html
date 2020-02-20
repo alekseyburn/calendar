@@ -8,13 +8,16 @@
   <title>Календарь</title>
   <link rel="preload" href="css/style.min.css" as="style">
   <link rel="stylesheet" href="css/style.min.css">
+
+  <script src="js/script.min.js" defer></script>
 </head>
 <body>
+<h1 class="visually-hidden">Календарь на первое полугодие</h1>
 <section class="calendar">
   <ul class="calendar__list">
     <li class="calendar__item">
       <table class="calendar__table table">
-        <caption class="table__month">
+        <caption class="table__month" data-month="Jan">
           Январь
         </caption>
         <thead>
@@ -458,6 +461,14 @@
     </li>
   </ul>
 </section>
+
+<template id="date-info-template" style="display: none">
+  <div class="calendar__info date-info">
+    <h2 class="date-info__title"></h2>
+    <p class="date-info__text"></p>
+    <a href="#" class="date-info__link">Скачать Pdf</a>
+  </div>
+</template>
 
 </body>
 </html>
