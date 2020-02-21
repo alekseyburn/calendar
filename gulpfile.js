@@ -78,7 +78,7 @@ gulp.task("js", function () {
   if (isProduction) {
     return gulp.src("source/js/**/*.js")
     .pipe(babel({ presets: ["@babel/preset-env"] }))
-    .pipe(uglyfly())
+    // .pipe(uglyfly())
     .pipe(iife({useStrict: false}))
     .pipe(rename({extname: ".min.js"}))
     .pipe(gulp.dest("build/js"));
@@ -86,7 +86,7 @@ gulp.task("js", function () {
     return gulp.src("source/js/**/*.js")
     .pipe(sourcemap.init())
     .pipe(babel({ presets: ["@babel/preset-env"] }))
-    .pipe(uglyfly())
+    // .pipe(uglyfly())
     .pipe(iife({useStrict: false}))
     .pipe(rename({extname: ".min.js"}))
     .pipe(sourcemap.write("."))
