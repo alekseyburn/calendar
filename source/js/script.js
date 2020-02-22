@@ -35,15 +35,16 @@ calendar.onclick = function (event) {
   if (!td) return;
   //выполняем функцию
   console.log(`${td.textContent} ${td.offsetParent.caption.dataset.month}`);
-  renderDateInfo(td);
+  if (td.classList.contains('table__day--active')) {
+    renderDateInfo(td);
+  } else {
+    renderForm(td);
+  }
 };
 
 
 function renderDateInfo(date) {
-  // Если уже существует блок с информацией на странице, то удаляем его
-  if (calendar.querySelector('.date-info')) {
-    calendar.querySelector('.date-info').remove();
-  }
+  removeBlock();
 
   // Берём заранее подготовленный шаблон из разметки и делаем его копию
   let template = document.querySelector('#date-info-template').content.querySelector('.date-info');
@@ -60,8 +61,37 @@ function renderDateInfo(date) {
     dateInfoElement.querySelector('.date-info__link').href = dateInfo[month][day].link;
 
     calendar.appendChild(dateInfoElement);
-  } else {
-
   }
 }
 
+function renderForm(td) {
+  removeBlock();
+
+  // Берём заранее подготовленный шаблон из разметки и делаем его копию
+  let template = document.querySelector('#form-template').content.querySelector('.form');
+  let formElement = template.cloneNode(true);
+
+  let month = td.offsetParent.caption.textContent;
+  let day = td.textContent;
+
+  day = (/\*/i.test(day)) ? day.slice(0, day.length-1) : day;
+  month = month.replace(/[а-я]$/, (match) => {
+    return (match == 'т') ? 'та' : 'я';
+  });
+
+  formElement.querySelector('.form__label').textContent = `${day} ${month}`;
+
+  calendar.appendChild(formElement);
+}
+
+function removeBlock() {
+  // Если уже существует блок с формой на странице, то удаляем его
+  if (calendar.querySelector('.form')) {
+    calendar.querySelector('.form').remove();
+  }
+
+  // Если уже существует блок с информацией на странице, то удаляем его
+  if (calendar.querySelector('.date-info')) {
+    calendar.querySelector('.date-info').remove();
+  }
+}

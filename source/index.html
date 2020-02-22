@@ -460,12 +460,7 @@
       </table>
     </li>
   </ul>
-    <form class="calendar__textarea form" action="#" method="POST">
-      <label class="form__label">
-        <textarea class="form__textarea" name="text" rows="5" placeholder="Запланируйте свои дела"></textarea>
-      </label>
-      <button class="btn" type="submit">Сохранить</button>
-    </form>
+
 </section>
 
 <template id="date-info-template" style="display: none">
@@ -474,6 +469,14 @@
     <p class="date-info__text"></p>
     <a href="#" class="btn date-info__link">Скачать Pdf</a>
   </div>
+</template>
+
+<template id="form-template" style="display: none">
+  <form class="calendar__textarea form" action="#" method="POST">
+    <label class="form__label" for="textarea"></label>
+    <textarea class="form__textarea" id="textarea" name="text" rows="5" placeholder="Запланируйте свои дела"></textarea>
+    <button class="btn" type="submit">Сохранить</button>
+  </form>
 </template>
 
 </body>

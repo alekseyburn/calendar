@@ -1,16 +1,18 @@
 .form {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   border-top: 1px solid $black;
+  flex-direction: column;
+  padding: 5px 0;
 }
 
 .form__label {
-  width: 50%;
-  margin-right: 10px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .form__textarea {
-  border: 0px solid $black;
+  border: 0 solid $black;
   display: block;
 
   padding: 5px;
@@ -21,4 +23,6 @@
   line-height: 24px;
 
   resize: none;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
