@@ -1,11 +1,8 @@
 'use strict';
 
-let activeDays = document.querySelectorAll('.table__day--active');
-// let info = activeDays.forEach(item => {
-//   console.log(`day: ${item.innerText} + month: ${item.offsetParent.caption.textContent}`);
-// });
-//
-// console.log(activeDays);
+let calendar = document.querySelector('.calendar');
+let activeDays = calendar.querySelectorAll('.table__day--active');
+let inactiveDays = calendar.querySelectorAll('.table__day--off');
 
 // Объект для хранения информации о датах
 let dateInfo = {
@@ -63,18 +60,25 @@ let dateInfo = {
   },
 };
 
+//блокируем пустые td
+function blockEmptyTd() {
+  inactiveDays.forEach(item => {
+    item.querySelector('a').tabIndex = -1;
+  });
+}
 
-let calendar = document.querySelector('.calendar');
+blockEmptyTd();
 
-calendar.onclick = function (event) {
+calendar.onclick = (event) => {
   // Возвращаем ближайшего предка, соответствующего селектору td
   let td = event.target.closest('td');
   // Если event.target не содержится внутри td, то возвращаем null
   if (!td) return;
-  //выполняем функцию
-  console.log(`${td.textContent} ${td.offsetParent.caption.dataset.month}`);
+
   if (td.classList.contains('table__day--active')) {
     renderDateInfo(td);
+  } else if (!td.textContent) {
+    return;
   } else {
     renderForm(td);
   }
@@ -127,7 +131,6 @@ function renderForm(td) {
 
   let form = document.querySelector("form");
   form.addEventListener("submit", (event) => {
-    // console.log("Saving value", form.elements.value.value);
     event.preventDefault();
     let month = td.offsetParent.caption.dataset.month;
     let day = `day${form.querySelector('.form__label').textContent.replace(/\D/g, '')}`;
@@ -152,21 +155,6 @@ function removeBlock() {
   }
 }
 
-let months = {
-  January: 'Январь',
-  February: 'Февраль',
-  March: 'Март',
-  April: 'Апрель',
-  May: 'Май',
-  June: 'Июнь',
-  Jule: 'Июль',
-  August: 'Август',
-  September: 'Сентябрь',
-  October: 'Октябрь',
-  November: 'Ноябрь',
-  December: 'Декабрь',
-};
-
 function renderCalendar() {
   for (let month in dateInfo) {
     for (let day in dateInfo[month]) {
@@ -174,7 +162,6 @@ function renderCalendar() {
       day = day.replace(/\D/g, '');
       let all = calendar.querySelectorAll('.table td');
       all.forEach(item => {
-        // console.log(`${item.textContent} ${item.offsetParent.caption.dataset.month}`);
         if (item.textContent == day && item.offsetParent.caption.dataset.month == month) {
           item.classList.add("table__day--active");
         }
@@ -184,3 +171,43 @@ function renderCalendar() {
 }
 
 renderCalendar();
+
+let saveButton = document.querySelector('.calendar__link');
+
+saveButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  renderDates();
+  location.href = 'dates.html';
+});
+
+function renderDates() {
+  let fragment = document.createDocumentFragment();
+  let activeDates = calendar.querySelectorAll('.table__day--active');
+
+
+  activeDates.forEach(item => {
+    // Берём заранее подготовленный шаблон из разметки и делаем его копию
+    let template = document.querySelector('#date-info-template').content.querySelector('.date-info');
+    let dateInfoElement = template.cloneNode(true);
+    dateInfoElement.classList.remove('calendar__info');
+    dateInfoElement.classList.add('dates__item');
+
+
+    // Записываем в переменные месяц и день из ячейки таблицы, по которой произошел клик
+    let month = `${item.offsetParent.caption.dataset.month}`;
+    let day = `day${item.textContent}`;
+    // Создаём 1 экземпляр и заполняем его
+    if (dateInfo[month][day]) {
+      dateInfoElement.querySelector('.date-info__title').textContent = dateInfo[month][day].date;
+      dateInfoElement.querySelector('.date-info__text').textContent = dateInfo[month][day].text;
+      dateInfoElement.querySelector('.date-info__link').remove();
+
+      fragment.appendChild(dateInfoElement);
+    }
+  });
+
+  let div = document.createElement('div');
+  div.appendChild(fragment);
+  let selectedText = div.innerHTML;
+  localStorage.fragment = JSON.stringify(selectedText);
+}

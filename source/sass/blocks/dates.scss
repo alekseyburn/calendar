@@ -1,0 +1,10 @@
+.dates {
+  width: $tablet-width;
+  margin: 0 auto;
+
+  & div {
+    border: none;
+    border-bottom: 1px solid $black;
+    margin-bottom: 20px;
+  }
+}

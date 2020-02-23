@@ -1,4 +1,6 @@
 .calendar {
+  display: flex;
+  flex-direction: column;
   padding: $margin;
 
   background-color: $gray;
@@ -29,6 +31,6 @@
   }
 }
 
-.highlight {
-  background-color: black;
+.calendar__link {
+  align-self: flex-end;
 }
