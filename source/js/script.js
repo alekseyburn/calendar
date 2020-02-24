@@ -2,6 +2,8 @@
 
 let calendar = document.querySelector('.calendar');
 let inactiveDays = calendar.querySelectorAll('.table__day--off');
+let saveButton = document.querySelector('.calendar__link');
+
 
 // Объект для хранения информации о датах
 let dateInfo = {
@@ -84,6 +86,7 @@ calendar.onclick = (event) => {
 };
 
 
+// При нажатии на активную дату выводим под календарь информацию о дате
 function renderDateInfo(date) {
   removeBlock();
 
@@ -119,27 +122,36 @@ function renderForm(td) {
   let month = td.offsetParent.caption.textContent;
   let day = td.textContent;
 
+  // Избавляемся от звёздочки, заменяем окончание у месяцев
   day = (/\*/i.test(day)) ? day.slice(0, day.length-1) : day;
   month = month.replace(/[а-я]$/, (match) => {
     return (match === 'т') ? 'та' : 'я';
   });
 
+  // Заполняяем день и месяц
   formElement.querySelector('.form__label').textContent = `${day} ${month}`;
 
+  // Добавляем форму на страницу
   calendar.appendChild(formElement);
 
   let form = document.querySelector("form");
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", fillForm);
+
+  function fillForm(event) {
     event.preventDefault();
+
     let month = td.offsetParent.caption.dataset.month;
     let day = `day${form.querySelector('.form__label').textContent.replace(/\D/g, '')}`;
+
     dateInfo[month][day] = {
       date: form.querySelector('.form__label').textContent,
       text: form.textarea.value,
     };
+
     form.remove();
     renderCalendar();
-  });
+    form.removeEventListener("submit", fillForm);
+  }
 }
 
 function removeBlock() {
@@ -172,7 +184,6 @@ function renderCalendar() {
 
 renderCalendar();
 
-let saveButton = document.querySelector('.calendar__link');
 
 saveButton.addEventListener("click", (event) => {
   event.preventDefault();
