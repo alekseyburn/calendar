@@ -18,6 +18,7 @@ let svgstore = require("gulp-svgstore");
 let uglyfly = require("gulp-uglyfly");
 let babel = require("gulp-babel");
 let iife = require("gulp-iife");
+const ghPages = require('gh-pages');
 const isProduction = process.env.NODE_ENV;
 
 gulp.task("html", function () {
@@ -135,6 +136,10 @@ gulp.task("server", function () {
 gulp.task("refresh", function (done) {
   server.reload();
   done();
+});
+
+gulp.task('deploy', (cb) => {
+  ghPages.publish('build', cb);
 });
 
 gulp.task("build", gulp.series("clean", "copy", "html", "css", "webp", "images", "sprite", "js"));
