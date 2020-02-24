@@ -3,8 +3,13 @@
   margin: 0 auto;
 
   & div {
+    margin-bottom: 20px;
+
     border: none;
     border-bottom: 1px solid $black;
-    margin-bottom: 20px;
+
+    & h2 {
+      color: $black;
+    }
   }
 }

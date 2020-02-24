@@ -1,7 +1,6 @@
 'use strict';
 
 let calendar = document.querySelector('.calendar');
-let activeDays = calendar.querySelectorAll('.table__day--active');
 let inactiveDays = calendar.querySelectorAll('.table__day--off');
 
 // Объект для хранения информации о датах
@@ -158,11 +157,12 @@ function removeBlock() {
 function renderCalendar() {
   for (let month in dateInfo) {
     for (let day in dateInfo[month]) {
-      console.log(`месяц ${month} день ${day}`);
       day = day.replace(/\D/g, '');
+
       let all = calendar.querySelectorAll('.table td');
       all.forEach(item => {
-        if (item.textContent == day && item.offsetParent.caption.dataset.month == month) {
+        let holiday = (/\*/i.test(item.textContent)) ? item.textContent.slice(0, item.textContent.length-1) : item.textContent;
+        if (holiday == day && item.offsetParent.caption.dataset.month == month) {
           item.classList.add("table__day--active");
         }
       })
@@ -195,7 +195,8 @@ function renderDates() {
 
     // Записываем в переменные месяц и день из ячейки таблицы, по которой произошел клик
     let month = `${item.offsetParent.caption.dataset.month}`;
-    let day = `day${item.textContent}`;
+    let day = `day${(/\*/i.test(item.textContent)) ? item.textContent.slice(0, item.textContent.length-1) : item.textContent}`;
+
     // Создаём 1 экземпляр и заполняем его
     if (dateInfo[month][day]) {
       dateInfoElement.querySelector('.date-info__title').textContent = dateInfo[month][day].date;
