@@ -23,7 +23,7 @@ body {
   line-height: 36px;
   font-family: "Arial", sans-serif;
   color: #000000;
-  background-color: #e7e7e8; }
+  background-color: #edcccd; }
 
 .visually-hidden {
   position: absolute;
@@ -45,7 +45,7 @@ body {
   line-height: 24px;
   vertical-align: middle;
   color: #ffffff;
-  background-color: #2a7762;
+  background-color: #ce5264;
   border: none;
   cursor: pointer; }
 
@@ -58,7 +58,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 11px;
-  background-color: #e7e7e8; }
+  background-color: #edcccd; }
 
 .calendar__list {
   margin: 0;
@@ -93,14 +93,14 @@ body {
   border-collapse: collapse;
   border-spacing: 0;
   text-align: center;
-  background-color: #e7e7e8; }
+  background-color: #edcccd; }
 
 .table__month {
   height: 36px;
   font-weight: 700;
   line-height: 36px;
   color: #ffffff;
-  background-color: #2a7762; }
+  background-color: #ce5264; }
 
 .table__daynames {
   height: 36px; }
@@ -123,12 +123,12 @@ body {
 
 .date-info {
   padding: 5px 0;
-  border-top: 1px solid #2a7762; }
+  border-top: 1px solid #ce5264; }
 
 .date-info__title {
   margin: 0;
   font-size: 20px;
-  color: #2a7762; }
+  color: #ce5264; }
 
 .date-info__text {
   margin: 0 0 11px;
@@ -146,12 +146,12 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   padding: 5px 0;
-  border-top: 1px solid #2a7762; }
+  border-top: 1px solid #ce5264; }
 
 .form__label {
   font-weight: 700;
   font-size: 20px;
-  color: #2a7762; }
+  color: #ce5264; }
 
 .form__textarea {
   display: block;
@@ -162,8 +162,8 @@ body {
   font: inherit;
   font-size: 15px;
   line-height: 24px;
-  background-color: #e7e7e8;
-  border: 1px solid #2a7762;
+  background-color: #edcccd;
+  border: 1px solid #ce5264;
   resize: none; }
 
 .dates {
