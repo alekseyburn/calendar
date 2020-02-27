@@ -4,13 +4,13 @@
   align-items: flex-start;
   padding: 5px 0;
 
-  border-top: 1px solid $green;
+  border-top: 1px solid $red;
 }
 
 .form__label {
   font-weight: 700;
   font-size: 20px;
-  color: $green;
+  color: $red;
 }
 
 .form__textarea {
@@ -24,8 +24,8 @@
   font-size: 15px;
   line-height: 24px;
 
-  background-color: $gray;
-  border: 1px solid $green;
+  background-color: $pink;
+  border: 1px solid $red;
 
   resize: none;
 }

@@ -7,34 +7,11 @@ let saveButton = document.querySelector('.calendar__link');
 
 // Объект для хранения информации о датах
 let dateInfo = {
-  January: {
-    day9: {
-      date: "9 Января",
-      text: "something text there",
-      link: "https://demo.com",
-    },
-  },
-  February: {
-    day3: {
-      date: "3 Февраля",
-      text: "osofew foweofwefo ofweofow ofwoeofowfo fow",
-      link: "https://test.com",
-    },
-    day17: {
-      date: "17 Февраля",
-    }
-  },
-  March: {
-    day2: {
-      date: "2 Марта",
-    },
-    day30: {
-      date: "30 Марта",
-    },
-  },
   April: {
     day1: {
       date: "1 Апреля",
+      text: "some text here",
+      link: "http://test.com"
     },
     day15: {
       date: "15 Апреля",
