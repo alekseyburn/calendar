@@ -8,32 +8,61 @@ let saveButton = document.querySelector('.calendar__link');
 // Объект для хранения информации о датах
 let dateInfo = {
   April: {
-    day1: {
-      date: "1 Апреля",
-      text: "some text here",
-      link: "http://test.com"
+    day2: {
+      date: "2 Апреля",
+      text: "Подать сведения по форме № 3-Ф за март",
+    },
+    day8: {
+      date: "8 Апреля",
+      text: "Подать отчет № П-4 (НЗ)",
     },
     day15: {
       date: "15 Апреля",
+      text: "Подать отчет № П-4 за март или за I квартал, СЗВ-ТД и СЗВ-М за март \nПеречислить взносы за март",
+    },
+    day20: {
+      date: "20 Апреля",
+      text: "Сдать 4-ФСС за  I квартал на бумаге. \nПредставить ДСВ-3 за I квартал, отчет об использовании взносов на меры по сокращению производственного травматизма и профзаболеваний",
+    },
+    day27: {
+      date: "27 Апреля",
+      text: "Подать 4-ФСС за  I квартал в электронном виде,  отчет об использовании взносов на меры по сокращению производственного травматизма и профзаболеваний",
     },
     day30: {
       date: "30 Апреля",
+      text: "Подать РСВ за I квартал \nПеречислить НДФЛ с больничных и отпускных, выданных в апреле",
     },
   },
   May: {
-    day12: {
-      date: "12 Мая",
+    day6: {
+      date: "6 Мая",
+      text: "Подать сведения по форме № 3-Ф за апрель",
+    },
+    day8: {
+      date: "8 Мая",
+      text: "Выплатить отпускные работникам \nСоставить записку-расчет об исчислении среднего заработка при предоставлении отпуска",
     },
     day15: {
       date: "15 Мая",
+      text: "Подать отчеты по формам № П-4, СЗВ-ТД и СЗВ-М за апрель \nПеречислить взносы за апрель",
     },
   },
   June: {
     day1: {
       date: "1 Июня",
+      text: "Перечислить НДФЛ с больничных и отпускных, выданных в мае",
     },
-    day29: {
-      date: "29 Июня",
+    day2: {
+      date: "2 Июня",
+      text: "Подать сведения по форме № 3-Ф за май",
+    },
+    day15: {
+      date: "15 Июня",
+      text: "Подать отчеты по формам № П-4, СЗВ-ТД и  СЗВ-М за май \nПеречислить взносы за май",
+    },
+    day30: {
+      date: "30 Июня",
+      text: "Перечислить НДФЛ с больничных и отпускных, выданных в июне",
     },
   },
 };
@@ -73,12 +102,13 @@ function renderDateInfo(date) {
 
   // Записываем в переменные месяц и день из ячейки таблицы, по которой произошел клик
   let month = `${date.offsetParent.caption.dataset.month}`;
-  let day = `day${date.textContent}`;
+  let day = `day${(/\*/i.test(date.textContent)) ? date.textContent.slice(0, date.textContent.length-1) : date.textContent}`;
 
   // Если на выбранной дате присутствует информация, то выводим её в конце таблицы
   if (dateInfo[month][day]) {
     dateInfoElement.querySelector('.date-info__title').textContent = dateInfo[month][day].date;
     dateInfoElement.querySelector('.date-info__text').textContent = dateInfo[month][day].text;
+    dateInfoElement.querySelector('.date-info__text').style.whiteSpace = 'pre-line';
     if (dateInfo[month][day].link) {
       dateInfoElement.querySelector('.date-info__link').href = dateInfo[month][day].link;
     } else {

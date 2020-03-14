@@ -16,3 +16,6 @@ let stringToHTML = function (str) {
 let main = document.querySelector('main');
 let info = stringToHTML(JSON.parse(localStorage.fragment));
 main.appendChild(info);
+document.querySelectorAll('.date-info__text').forEach(item => {
+  item.style.whiteSpace = 'pre-line';
+});
