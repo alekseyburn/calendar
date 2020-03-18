@@ -23,7 +23,7 @@ const isProduction = process.env.NODE_ENV;
 
 gulp.task("html", function () {
   return  gulp.src("source/**/*.html")
-    .pipe(htmlmin({ collapseWhitespace: true }))
+    // .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("build"))
     .pipe(server.stream());
 });
@@ -37,22 +37,22 @@ gulp.task("css", function () {
       autoprefixer()
     ]))
     .pipe(gulp.dest("build/css"))
-    .pipe(csso())
+    // .pipe(csso())
     .pipe(rename("style.min.css"))
     .pipe(gulp.dest("build/css"))
     .pipe(server.stream());
   } else {
     return gulp.src("source/sass/style.scss")
     .pipe(plumber())
-    .pipe(sourcemap.init())
+    // .pipe(sourcemap.init())
     .pipe(sass())
     .pipe(postcss([
       autoprefixer()
     ]))
     .pipe(gulp.dest("build/css"))
-    .pipe(csso())
+    // .pipe(csso())
     .pipe(rename("style.min.css"))
-    .pipe(sourcemap.write("."))
+    // .pipe(sourcemap.write("."))
     .pipe(gulp.dest("build/css"))
     .pipe(server.stream());
   }
@@ -85,12 +85,12 @@ gulp.task("js", function () {
     .pipe(gulp.dest("build/js"));
   } else {
     return gulp.src("source/js/**/*.js")
-    .pipe(sourcemap.init())
+    // .pipe(sourcemap.init())
     .pipe(babel({ presets: ["@babel/preset-env"] }))
     // .pipe(uglyfly())
     .pipe(iife({useStrict: false}))
     .pipe(rename({extname: ".min.js"}))
-    .pipe(sourcemap.write("."))
+    // .pipe(sourcemap.write("."))
     .pipe(gulp.dest("build/js"));
   }
 });
