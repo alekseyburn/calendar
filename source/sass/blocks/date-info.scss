@@ -1,14 +1,15 @@
 .date-info {
   padding: 5px 0;
 
-  border-top: 1px solid $red;
+  border-top: 1px solid rgba(73,155,234,1);
+;
 }
 
 .date-info__title {
   margin: 0;
 
   font-size: 20px;
-  color: $red;
+  color: rgba(73,155,234,1);
 }
 
 .date-info__text {
