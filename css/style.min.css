@@ -23,7 +23,7 @@ body {
   line-height: 36px;
   font-family: "Arial", sans-serif;
   color: #000000;
-  background-color: #edcccd; }
+  background-color: #e7e7e8; }
 
 .visually-hidden {
   position: absolute;
@@ -45,7 +45,8 @@ body {
   line-height: 24px;
   vertical-align: middle;
   color: #ffffff;
-  background-color: #ce5264;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#499bea), to(#207ce5));
+  background-image: linear-gradient(to bottom, #499bea 0%, #207ce5 100%);
   border: none;
   cursor: pointer; }
 
@@ -58,7 +59,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 11px;
-  background-color: #edcccd; }
+  background-color: #e7e7e8; }
 
 .calendar__list {
   margin: 0;
@@ -93,14 +94,15 @@ body {
   border-collapse: collapse;
   border-spacing: 0;
   text-align: center;
-  background-color: #edcccd; }
+  background-color: #e7e7e8; }
 
 .table__month {
   height: 36px;
   font-weight: 700;
   line-height: 36px;
   color: #ffffff;
-  background-color: #ce5264; }
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#499bea), to(#207ce5));
+  background-image: linear-gradient(to bottom, #499bea 0%, #207ce5 100%); }
 
 .table__daynames {
   height: 36px; }
@@ -123,12 +125,12 @@ body {
 
 .date-info {
   padding: 5px 0;
-  border-top: 1px solid #ce5264; }
+  border-top: 1px solid #499bea; }
 
 .date-info__title {
   margin: 0;
   font-size: 20px;
-  color: #ce5264; }
+  color: #499bea; }
 
 .date-info__text {
   margin: 0 0 11px;
@@ -146,12 +148,12 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   padding: 5px 0;
-  border-top: 1px solid #ce5264; }
+  border-top: 1px solid #499bea; }
 
 .form__label {
   font-weight: 700;
   font-size: 20px;
-  color: #ce5264; }
+  color: #499bea; }
 
 .form__textarea {
   display: block;
@@ -162,8 +164,9 @@ body {
   font: inherit;
   font-size: 15px;
   line-height: 24px;
-  background-color: #edcccd;
-  border: 1px solid #ce5264;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#cee0f0), to(#91c6ff));
+  background-image: linear-gradient(to bottom, #cee0f0 0%, #91c6ff 100%);
+  border: 1px solid #499bea;
   resize: none; }
 
 .dates {
